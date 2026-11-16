@@ -1,0 +1,16 @@
+# Evomyth bildirim zamanlayıcısı: 5 dakikada bir sitedeki bildirim sunucusunu çağırır.
+# Sunucu yaklaşan Evo League / Master League maçlarına bakıp öğrencilere hatırlatma (22.00, ~1 saat, ~10 dakika),
+# öğretmenlere maç sonucu bildirimi gönderir. Zamanı gelmiş bir şey yoksa hiçbir şey göndermez.
+# GitHub zamanlanmış görevleri yoğun saatlerde birkaç dakika gecikebilir.
+name: Evomyth bildirim zamanlayıcısı
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+jobs:
+  calistir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Bildirim sunucusunu çağır
+        run: curl -sS -m 60 https://www.thegamifyclass.com/api/evomyth-bildirim
