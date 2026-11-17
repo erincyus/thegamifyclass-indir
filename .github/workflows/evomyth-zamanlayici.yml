@@ -13,4 +13,7 @@ jobs:
     timeout-minutes: 2
     steps:
       - name: Bildirim sunucusunu çağır
-        run: curl -sS -m 60 https://www.thegamifyclass.com/api/evomyth-bildirim
+        run: |
+          curl -sS -m 60 https://www.thegamifyclass.com/api/evomyth-bildirim
+          echo
+          curl -sS -m 60 https://www.thegamifyclass.com/api/evomyth-uyelik
